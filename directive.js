@@ -6,8 +6,8 @@ app.directive('zdcRavetext', ['$interval','$compile', function($interval, $compi
     template = angular.element($compile(htmlText)(scope));
     elem.replaceWith(template);
   };
+
   return {
-    // transclude: true,
     restrict: 'E',
     scope: true,
     compile: function compile(elem, attr){
@@ -15,4 +15,4 @@ app.directive('zdcRavetext', ['$interval','$compile', function($interval, $compi
       return linkFunction;
     }
   }
-}])
+}]);
