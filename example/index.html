@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="zdc-frontend">
+<html ng-app="zdc_ravetext_example">
 
   <head>
     <meta charset="utf-8" />
@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="../style.css" />
     <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.0-rc.2/angular.js" data-semver="1.4.0-rc.2"></script>
     <script src="app.js"></script>
+    <script src="../directive.js"></script>
   </head>
 
   <body ng-controller="MainCtrl">
-  <p><zdc-ravetext>Hello {{name}}! This is a bit of test text for the Ravetext directive.</zdc-ravetext></p>
+  <p><zdc-ravetext >Hello {{name}}! This is a bit of test text for the Ravetext directive.</zdc-ravetext></p>
   </body>
 
 </html>
