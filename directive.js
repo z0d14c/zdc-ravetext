@@ -7,22 +7,28 @@ app.directive('zdcRavetext', ['$compile', function($compile){
         "'color': 'transparent'," +
         "'-webkit-background-clip': 'text'," +
         "'background-clip': 'text'," +
-        "'-webkit-animation': 'AnimationName 1s ease infinite'," +
-        "'-moz-animation': 'AnimationName 1s ease infinite', " +
-        "'-o-animation': 'AnimationName 1s ease infinite', " +
-        "'animation': 'AnimationName 1s ease infinite'}";
+        "'-webkit-animation': 'AnimationName ' + zdcRtConfig.output.rate + ' ease infinite'," +
+        "'-moz-animation': 'AnimationName ' + zdcRtConfig.output.rate + ' ease infinite', " +
+        "'-o-animation': 'AnimationName ' + zdcRtConfig.output.rate + ' ease infinite', " +
+        "'animation': 'AnimationName ' + zdcRtConfig.output.rate + ' ease infinite'}";
 
     var linkFunction = function(scope, elem, attrs){
         elem.text('<span class="" ng-style="' + style + '">' + elem.html() + '</span>');
         scope.zdcRtConfig.output = {};
-        scope.zdcRtConfig.output.background = zdcRt.bckgImage(scope.zdcRtConfig.background);
+        scope.zdcRtConfig.output = zdcRt.parseAll(scope.zdcRtConfig);
         htmlText = elem.text();
         template = angular.element($compile(htmlText)(scope));
         elem.replaceWith(template);
     };
 
     var zdcRt = {
-        bckgImage: function (input){ //takes input of hex color codes array and formats them
+        parseAll: function(input){
+            var output = {};
+            output.background = this.backgroundParse(input.background);
+            output.rate = this.rateParse(input.rate);
+            return output;
+        },
+        backgroundParse: function (input){ //takes input of hex color codes array and formats them
             var output = '';
             angular.forEach(input, function(color, index){
                 output = output + color;
@@ -31,6 +37,9 @@ app.directive('zdcRavetext', ['$compile', function($compile){
                 }
             });
             return output;
+        },
+        rateParse: function (input){
+            return input + 's';
         }
     };
 
