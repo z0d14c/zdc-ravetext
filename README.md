@@ -26,13 +26,18 @@ Documentation follows the following pattern.
     * Seconds *string*
     * Sets the speed/rate of the animation.
     * `'1'`
+* timing
+    * timing-function *string*
+    * This sets the css property that chooses the animation timing function, [see here.](http://www.w3schools.com/cssref/css3_pr_animation-timing-function.asp#).
+    * `linear`
 
 Code example:
 ` $scope.zdcRtConfig = {
         background  : ['#246655', '#cec763', '#c463ce', '#63bace', '#3046bb', '#000000'],
-        rate: '1'
+        rate: '1',
+        timing: 'linear'
         }; `
         
-# Notes
+# Misc Notes
 zdc as a prefix is short for z0d14c. Thanks for checking out the directive and if you want to contribute, please follow
 the above guidelines and follow the coding style in the project.
